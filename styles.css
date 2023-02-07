@@ -5,6 +5,8 @@
 }
 body {
   min-width: 400px;
+  box-sizing: border-box;
+  border: 10px solid rgba(131, 7, 7, 0.671);
 }
 #form {
   display: flex;
@@ -23,7 +25,8 @@ body > * {
   padding: 20px;
 }
 h3 {
-  background-color: rgba(0, 140, 255, 0.521);
+  background-color: rgba(131, 7, 7, 0.671);
+  color: white;
 }
 .form-check {
   font-size: larger;

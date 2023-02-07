@@ -1,13 +1,22 @@
-chrome.runtime.onMessage.addListener(function (response, sender, sendResponse) {
-  const key = response.key;
-  const shift = response.shift;
-  const ctrl = response.ctrl;
-  const order = response.order;
+let Binds = {};
+chrome.storage.local.get("Binds", (res) => (Binds = res.Binds));
+
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+  chrome.storage.local.get("Binds", (res) => (Binds = res.Binds));
+  const order = request.order;
   if (order == "Macro") {
-    if (key == "Q" && ctrl && shift) {
+    const key = request.key;
+    const shift = request.shift;
+    const ctrl = request.ctrl;
+    if (key && ctrl && shift) {
       let tabId = sender.tab.id;
-      runfileHere(tabId, "inject.js");
+      if (Binds[key]) {
+        runfileHere(tabId, Binds[key]);
+      }
     }
+  } else if (order == "update") {
+    Binds = request.Binds;
+    chrome.storage.local.set({ Binds });
   }
 });
 async function runfileHere(tabId, file) {
