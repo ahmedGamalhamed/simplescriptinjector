@@ -1,0 +1,40 @@
+* {
+  font-family: sans-serif;
+  text-align: center;
+  overflow: hidden; /* Hide scrollbars */
+}
+body {
+  min-width: 400px;
+}
+#form {
+  display: flex;
+  justify-content: space-around;
+}
+#save-btn {
+  width: 150px;
+}
+button {
+  width: 100px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+body > * {
+  padding: 20px;
+}
+h3 {
+  background-color: rgba(0, 140, 255, 0.521);
+}
+.form-check {
+  font-size: larger;
+  font-weight: 100;
+}
+.keys {
+  width: 50px;
+}
+.urls {
+  width: 100%;
+}
+.checks {
+  margin-top: 4px;
+}
