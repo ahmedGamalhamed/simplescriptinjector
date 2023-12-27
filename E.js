@@ -1,46 +1,25 @@
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 if (document.readyState !== "complete") {
-  document.onreadystatechange = function () {
-    if (document.readyState == "complete") {
-      initInjection();
-    }
-  };
-} else {
-  initInjection();
+    document.onreadystatechange = function () {
+        if (document.readyState == "complete") {
+            initInjection();
+        }
+    };
 }
-
-async function initInjection() {
-  console.log("Injecting... E");
-  //
-  //
+else {
+    initInjection();
 }
-
-function simulateMouseClick(element) {
-  const mouseClickEvents = ["mousedown", "click", "mouseup"];
-
-  mouseClickEvents.forEach((mouseEventType) =>
-    element.dispatchEvent(
-      new MouseEvent(mouseEventType, {
-        view: window,
-        bubbles: true,
-        cancelable: true,
-        buttons: 1,
-      })
-    )
-  );
+function initInjection() {
+    return __awaiter(this, void 0, void 0, function* () {
+        console.log("Injecting... E");
+    });
 }
-// Interact with google sheets
-/*
-var element = document.getElementById("docs-file-menu");
-  console.log(element);
-  simulateMouseClick(element);
-  let menuDownload = document.querySelectorAll("[aria-label='Download d']");
-  menuDownload = menuDownload[0];
-  simulateMouseClick(menuDownload);
-  simulateMouseClick(menuDownload);
-  let pdf = await WaitForQueryAll('[aria-label="PDF (.pdf) p"]');
-  pdf = pdf[0];
-  simulateMouseClick(pdf);
-  let download = await WaitForQueryAll(".docs-material-button-content");
-  download = download[7];
-  simulateMouseClick(download);
-  console.log(download[0]);*/
