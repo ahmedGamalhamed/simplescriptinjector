@@ -21,8 +21,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   } else if (order == "update") {
     Binds = request.Binds;
     chrome.storage.local.set({ Binds });
-  }
+  } else if (order == "windows") initWindows();
 });
+
 async function runfileHere(tabId, file) {
   chrome.scripting
     .executeScript({
@@ -32,4 +33,13 @@ async function runfileHere(tabId, file) {
     .catch((error) => {
       console.log("The Script for this combo doesnt exist \n", error);
     });
+}
+
+function initWindows() {
+  chrome.windows.getAll().then((windows) => {
+    windows.forEach((tWind) => {
+      const y = chrome.tabs.query({ windowId: tWind.id });
+      console.log(y);
+    });
+  });
 }

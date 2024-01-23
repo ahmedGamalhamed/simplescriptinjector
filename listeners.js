@@ -1,17 +1,20 @@
 document.addEventListener("DOMContentLoaded", initListeners());
 
 function listen(e) {
-  let key = e.code[3];
+  let key = e.key;
   let ctrl = e.ctrlKey;
   let shift = e.shiftKey;
   let alt = e.altKey;
-  if ((key && ctrl && shift) || (key && alt && ctrl)) {
-    if (key == "E") {
-      console.log("refreshing listenr");
-      document.removeEventListener("keydown", listen);
-      document.addEventListener("keydown", listen);
-    }
-    chrome.runtime.sendMessage({ order: "Macro", key: key, shift: shift, ctrl: ctrl });
+  if (
+    (/^[a-zA-Z]$/i.test(key) && key && ctrl && shift) ||
+    (key && alt && ctrl)
+  ) {
+    chrome.runtime.sendMessage({
+      order: "Macro",
+      key: key,
+      shift: shift,
+      ctrl: ctrl,
+    });
     console.log(key, ctrl, shift, alt);
   }
 }

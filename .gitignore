@@ -1,2 +1,4 @@
 /node_modules
 handlers/*.js
+vars.js
+vars.ts
