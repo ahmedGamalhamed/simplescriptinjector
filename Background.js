@@ -20,7 +20,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     // }
   } else if (order == "update") {
     Binds = request.Binds;
-    chrome.storage.local.set({ Binds });
+    chrome.storage.sync.set({ Binds });
   } else if (order == "windows") initWindows();
 });
 
